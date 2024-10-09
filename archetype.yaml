@@ -1,0 +1,9 @@
+---
+description: "Application Manifests Archetype"
+authors: ["Jimmie Fulton"]
+languages: ["YAML"]
+frameworks: ["Kubernetes"]
+tags: ["Kubernetes", "Operator", "Application"]
+
+requires:
+  archetect: 2.0.0-ALPHA.6
