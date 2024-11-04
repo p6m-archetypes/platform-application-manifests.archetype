@@ -1,5 +1,10 @@
 let context = #{};
 
+if switch_enabled("debug-answers") {
+    log(Info, `${archetect::archetype::description()} Answers:`);
+    display(as_yaml(ANSWERS));
+}
+
 const PROGRAMMING_CASES = CasedIdentityCasedValue([PascalCase, CamelCase, KebabCase, SnakeCase, TrainCase, ConstantCase]);
 
 context += prompt("Project Prefix:", "project-prefix", #{
@@ -19,6 +24,7 @@ context += prompt("Project Suffix:", "project-suffix", #{
     ],
 });
 
+
 if context.project_suffix == "service" {
   context += prompt("Persistence:", "persistence", #{
       type: Select(["CockroachDB", "None"]),
@@ -37,6 +43,18 @@ switch context["project-suffix"] {
     "domain-gateway" => context["service-protocol"]="GraphQL",
     "frontend" => context["service-protocol"]="REST",
     _ => context["service-protocol"]="gRPC",
+}
+
+let project_language = ANSWERS["project-language"];
+if project_language == () {
+    project_language = "Java"
+} 
+
+context += set("project-language", project_language, #{});
+
+if switch_enabled("debug-context") {
+    log(Info, `${archetect::archetype::description()} Context:`);
+    display(as_yaml(context));
 }
 
 Directory("contents").render(context);
