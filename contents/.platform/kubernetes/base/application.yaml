@@ -25,4 +25,4 @@ spec:
         port: 8081
     readinessProbe:
       port: 8081
-      path: /health/readiness
+      path: {% if project-language == '.NET' %}/health{% else %}/health/readiness{% endif%}
