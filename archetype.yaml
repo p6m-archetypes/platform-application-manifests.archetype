@@ -6,4 +6,4 @@ frameworks: ["Kubernetes"]
 tags: ["Kubernetes", "Operator", "Application"]
 
 requires:
-  archetect: 2.0.0-ALPHA.6
+  archetect: 2.0.0
