@@ -10,5 +10,5 @@ existing applications, or it can be composed by other archetypes, allowing all s
 After switching into the _root directory_ of your application project, run the following command:
 
 ```shell
-archetect render https://github.com/p6m-archetypes/platform-application-manifests.archetype.git#.rhav1
+archetect render https://github.com/p6m-archetypes/platform-application-manifests.archetype.git#v1
 ```
